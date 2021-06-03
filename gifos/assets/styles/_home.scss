@@ -1,0 +1,181 @@
+@import "_vars.scss";
+@media (min-width: 769px) {
+  //===============================================generals
+  nav ul,
+  footer p,
+  footer h2,
+  .section2 p {
+    font-weight: 600;
+  }
+  .section1 h1,
+  .section2 h2,
+  .section1 h2 {
+    font-weight: 800;
+  }
+  nav ul,
+  .section2 h2,
+  .section1 p,
+  .section1 h2,
+  h1 {
+    font-family: $font1;
+  }
+  .section1 input::placeholder,
+  .section2 p,
+  footer h2,
+  footer p {
+    font-family: $font2;
+  }
+  //===============================================header
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 7rem 0.7rem 7rem;
+    border-top: 5px solid $color1;
+  }
+  nav ul {
+    list-style: none;
+    font-family: "Montserrat";
+    font-size: 13px;
+    color: #572ee5;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+  }
+  nav ul li {
+    display: inline;
+    padding: 0 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  #burger {
+    display: none;
+  }
+  //===============================================section1
+  .section1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .section1 h1 {
+    width: 70%;
+    font-size: 25px;
+    color: $color1;
+    line-height: 33px;
+    padding-top: 2rem;
+  }
+  .section1 .gifos {
+    color: #5ed7c6;
+  }
+  .section1 > img {
+    width: 30%;
+  }
+  .section1 div {
+    position: relative;
+    width: 90%;
+    padding-bottom: 5rem;
+  }
+  .section1 input {
+    width: 50%;
+    background: #fff;
+    border: 1px solid $color1;
+    border-radius: 27px;
+    border-radius: 27px;
+    height: 50px;
+  }
+  .section1 input::placeholder {
+    // background-image: url("imgs/icon-search.svg");
+    font-size: 16px;
+    color: #6b7989;
+    padding-left: 4rem;
+  }
+  .section1 .search {
+    position: absolute;
+    left: 71.5%;
+    top: 28%;
+    width: 20px;
+    height: 20px;
+  }
+  .section1 h2 {
+    color: $color1;
+    text-align: center;
+    line-height: 25px;
+    font-size: 18px;
+  }
+  .section1 p {
+    padding-bottom: 5rem;
+    font-size: 16px;
+    color: $color1;
+    text-align: center;
+    line-height: 25px;
+    font-weight: 500;
+  }
+  //===============================================section2
+  .section2 {
+    background-color: $color3;
+    padding-bottom: 5rem;
+  }
+  .section2 h2 {
+    padding-top: 3rem;
+    font-size: 20px;
+    color: #572ee5;
+    text-align: center;
+    line-height: 30px;
+  }
+  .section2 p {
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+    line-height: 23px;
+    padding-bottom: 2rem;
+  }
+  .section2 div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .section2 div button {
+    margin: 0 1rem;
+    color: $color1;
+    border: 1px solid $color1;
+    width: 40px;
+    height: 40px;
+  }
+  .section2 div button:hover {
+    background-color: $color1;
+    color: #fff;
+    cursor: pointer;
+  }
+  .section2 .non-displayed {
+    display: none;
+  }
+  //===============================================footer
+  footer {
+    border-bottom: 5px solid $color1;
+    display: grid;
+    grid-template-columns: 200px 200px 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+  }
+  footer h2 {
+    font-size: 15px;
+    letter-spacing: 0;
+    justify-self: right;
+  }
+  footer img {
+    width: 20px;
+    height: 20px;
+    margin: 0.5rem;
+    cursor: pointer;
+  }
+  footer p {
+    font-size: 14px;
+    color: #000;
+    letter-spacing: 0;
+    line-height: 20px;
+    justify-self: right;
+    padding-right: 7rem;
+  }
+}
