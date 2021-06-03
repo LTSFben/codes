@@ -1,30 +1,73 @@
-const poke_carrousel_btns = document.querySelectorAll(".poke_carrousel_btn");
-const poke_carrousel_name = document.getElementById("poke_carrousel_name");
-const poke_carrousel_id = document.getElementById("poke_carrousel_id");
-const poke_carrousel_img = document.getElementById("poke_carrousel_img");
-const url = "https://pokeapi.co/api/v2/pokemon/";
+const pokeCarrouselBtns = document.querySelectorAll(".poke_carrousel_btn");
+const pokeCarrouselDiv = document.getElementById("poke_carrousel");
+const pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
 let pokeCarrouselCount = 1;
+const pokeQuantity = 5;
 
-myFetch();
-
-function myFetch() {
-  fetch(url + pokeCarrouselCount)
-    .then((response) => response.json())
-    .then((data) => {
-      poke_carrousel_name.textContent = `name: ${data.name}`;
-      poke_carrousel_id.textContent = `id: ${data.id}`;
-      poke_carrousel_img.src = data.sprites.front_default;
-    })
-    .catch((err) => console.log("Something went wrong :("));
+function pokeCarrousel() {
+  for (let i = 0; i < pokeQuantity; i++) {
+    const container = document.createElement("div");
+    let fragment = document.createDocumentFragment();
+    const p = document.createElement("p");
+    const img = document.createElement("img");
+    fragment.appendChild(p);
+    fragment.appendChild(img);
+    try {
+      fetch(pokeUrl + pokeCarrouselCount)
+        .then((r) => r.json())
+        .then((d) => {
+          p.textContent = `name: ${d.name} - id: ${d.id}`;
+          img.src = d.sprites.front_default;
+        });
+    } catch {
+      pokeCarrouselDiv.textContent = "Something went wrong :(";
+    }
+    pokeCarrouselCount++;
+    container.classList.add("poke-container");
+    container.appendChild(fragment);
+    pokeCarrouselDiv.appendChild(container);
+  }
 }
 
-let pokeDecrease = poke_carrousel_btns[0].addEventListener("click", () => {
-  pokeCarrouselCount--;
-  myFetch();
-});
-let pokeIncrease = poke_carrousel_btns[1].addEventListener("click", () => {
-  pokeCarrouselCount++;
-  myFetch();
+pokeCarrouselBtns.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    const pokeContainers = document.querySelectorAll(".poke-container");
+    if (index == "0") {
+      for (let i = 0; i < pokeQuantity; i++) {
+        pokeCarrouselCount--;
+        try {
+          fetch(pokeUrl + pokeCarrouselCount)
+            .then((r) => r.json())
+            .then((d) => {
+              let pathP = pokeContainers[i].childNodes[0];
+              pathP.textContent = `name: ${d.name} - id: ${d.id}`;
+              let pathImg = pokeContainers[i].childNodes[1];
+              pathImg.src = d.sprites.front_default;
+            });
+        } catch {
+          pokeCarrouselDiv.textContent = "Something went wrong :(";
+        }
+      }
+    } else {
+      for (let i = 0; i < pokeQuantity; i++) {
+        pokeCarrouselCount++;
+        try {
+          fetch(pokeUrl + pokeCarrouselCount)
+            .then((r) => r.json())
+            .then((d) => {
+              let pathP = pokeContainers[i].childNodes[0];
+              pathP.textContent = `name: ${d.name} - id: ${d.id}`;
+              let pathImg = pokeContainers[i].childNodes[1];
+              pathImg.src = d.sprites.front_default;
+            });
+        } catch {
+          pokeCarrouselDiv.textContent = "Something went wrong :(";
+        }
+      }
+    }
+  });
 });
 
-export { myFetch, pokeDecrease, pokeIncrease };
+pokeCarrousel();
+
+export { pokeCarrousel };

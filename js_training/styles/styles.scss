@@ -6,3 +6,12 @@
 .display {
   display: none;
 }
+#poke_carrousel {
+  display: flex;
+}
+.poke-container {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: center;
+}
